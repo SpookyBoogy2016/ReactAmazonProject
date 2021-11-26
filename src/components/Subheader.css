@@ -1,0 +1,29 @@
+.subheader {
+  height: 35px;
+  display: flex;
+  background-color: #455163;
+  position: sticky;
+  top: 60px;
+  z-index: 1;
+  /* z-index: 100; */
+}
+
+.subheader__option {
+  display: flex;
+  flex-direction: column;
+}
+
+.subheader__optionIcon {
+  color: white;
+}
+
+.subheader__button {
+  background: transparent;
+  margin-top: 4px !important;
+  /* border: none !important; */
+}
+
+.subheader__optionLineOne {
+  color: white;
+  font-size: 10px;
+}
