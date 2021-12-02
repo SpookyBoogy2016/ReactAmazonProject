@@ -3,7 +3,7 @@ import "./Login.css";
 import logo from "./img/amazon.png";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import { auth } from "./firebase";
+import { createUserWithEmailAndPassword, getAuth } from "./firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -16,8 +16,10 @@ function Login() {
   const signUp = (e) => {
     e.preventDefault();
     // fancy firebase signup stuff
+    const auth = getAuth();
+    const createUser = createUserWithEmailAndPassword();
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .createUser(email, password)
       .then((auth) => {
         // Successfully creates new user
         console.log(auth);
