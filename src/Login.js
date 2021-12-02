@@ -19,9 +19,11 @@ function Login() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
+        // Successfully creates new user
         console.log(auth);
       })
       .catch((error) => {
+        // Shows error when sign up is unsuccessful
         alert(error.message);
       });
   };
