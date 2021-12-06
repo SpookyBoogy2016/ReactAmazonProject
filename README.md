@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+The goal of this project is to learn to use extensions like Firebase and/or Supabase.
+
+After hitting a roadblock into Firebase CLI where the platform is rejecting hosting with a firewall, decisions were made to host on Github instead.
+
 ## Available Scripts
 
 In the project directory, you can run:

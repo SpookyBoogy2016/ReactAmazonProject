@@ -2,15 +2,55 @@ import React, { useState } from "react";
 import "./Login.css";
 import logo from "./img/amazon.png";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { supabase } from "./supabase";
 import { auth } from "./firebase";
 
 function Login() {
+  const history = useHistory();
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // Supabase authentication START:
+
+  // const signUp = async (email) => {
+  //   try {
+  //     setLoading(true);
+  //     const { error } = await supabase.auth.signUp({ email, password });
+  //     if (error) throw error;
+  //     console.log("Singed up with email: " + email);
+  //     useHistory.push("/");
+  //   } catch (error) {
+  //     alert("Error signing up!");
+  //     console.log(error);
+  //   }
+  // };
+
+  // const signIn = async (email) => {
+  //   email.preventDefault();
+  //   try {
+  //     setLoading(true);
+  //     const { error } = await supabase.auth.signIn({ email, password });
+  //     if (error) throw error;
+  //     console.log("Logged in with " + email);
+  //     history.push("/");
+  //   } catch (error) {
+  //     alert("ERROR!!!!");
+  //     console.log(error);
+  //   }
+  // };
+
+  // Firebase authentication START:
   const signIn = (e) => {
     // prevents refreshing
     e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        history.push("");
+      })
+      .catch((error) => alert(error.message));
     // fancy firebase signin stuff
   };
   const signUp = (e) => {
@@ -21,12 +61,16 @@ function Login() {
       .then((auth) => {
         // Successfully creates new user
         console.log(auth);
+        if (auth) {
+          history.push("/");
+        }
       })
       .catch((error) => {
         // Shows error when sign up is unsuccessful
         alert(error.message);
       });
   };
+  // Firebase authentication END
 
   return (
     <div className="login">

@@ -5,12 +5,13 @@ import { useStateValue } from "./StateProvider";
 import Subtotal from "./Subtotal";
 
 function Checkout() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
 
   return (
     <div className="checkout">
       <div className="checkout__left">
         <div>
+          <h3>Hello, {user?.email}</h3>
           <h2 class="cart__title">Your Amazong Cart </h2>
           {basket.map((item) => (
             <CheckoutProduct
