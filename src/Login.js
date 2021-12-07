@@ -3,7 +3,7 @@ import "./Login.css";
 import logo from "./img/amazon.png";
 import Button from "@material-ui/core/Button";
 import { Link, useHistory } from "react-router-dom";
-import { supabase } from "./supabase";
+// import { supabase } from "./supabase";
 import { auth } from "./firebase";
 
 function Login() {
